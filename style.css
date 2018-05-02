@@ -1,0 +1,43 @@
+body {
+    
+  box-sizing: border-box; 
+    
+}
+.timer {
+
+    height: 100vh;
+    background-color: #000;
+    color: #fff;
+    font-size: 16px;
+    font-family: monospace;
+    position: relative;
+}
+
+.quote{
+    text-align: center;
+}
+
+.timer-box {
+    
+    width: 40rem;
+    margin: 5rem auto;
+   
+   
+
+}
+
+.timer-box h2 {
+
+    font-size: 12rem;
+    float: left;
+    padding: 2rem;
+     text-align: center;
+
+
+}
+
+.preferences {
+    
+/*    visibility: hidden;*/
+}
+

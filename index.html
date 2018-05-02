@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+    <title>Pomodoro</title>
+</head>
+
+<body>
+
+    <div class="timer jumbotron">
+        <div class="quote">
+            <h1></h1>
+        </div>
+
+        <div class="timer-box">
+            <h2 class="timer-minutes">45</h2>
+            <h2 class="timer-seconds">59</h2>
+            <button type="button" class="btn btn-primary btn-lg btn-block" id="start-button">Work!</button>
+        </div>
+
+
+        <!--
+        <div class="progress jumbotron jumbotron-fluid">
+             <div class="container">
+                <h2>My Progress</h2>
+            </div>
+        </div>
+-->
+    </div>
+    <!--    ADD A DROPDOWN OR NAV FOR SETTING THE DURATION AND SESSIONS-->
+    <div class="container preferences">
+        <select class="custom-select custom-select-lg mb-3" id="ws-interval">
+  <option selected>Work Session Length</option>
+  <option value="45">45 minutes</option>
+  <option value="50">50 minutes</option>
+</select>
+
+        <select class="custom-select custom-select-lg mb-3" id="ws-perday">
+  <option selected>Number of Work Sessions Per Day</option>
+  <option value="1">One</option>
+  <option value="2">Two</option>
+  <option value="3">Three</option>
+  <option value="4">Four</option>
+  <option value="5">Five</option>
+  <option value="6">Six</option>
+  <option value="7">Seven</option>
+</select>
+
+        <select class="custom-select custom-select-lg mb-3" id="ws-break">
+  <option selected>Break Duration</option>
+  <option value="15">15 minutes</option>
+  <option value="20">20 minutes</option>
+  <option value="30">30 minutes</option>
+<option value="40">45 minutes</option>
+</select>
+    </div>
+
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+    <script src="script.js"></script>
+</body>
+</html>
