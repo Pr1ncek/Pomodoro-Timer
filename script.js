@@ -7,28 +7,29 @@
 
 var counterController = (function () {
 
-    var minutes, seconds, numberOfWorkSessions, breakInterval, pause;
+    var minutes, seconds, numberOfWorkSessions, breakInterval, pause, isBreak;
 
     minutes = 45;
     seconds = 59;
-    breakInterval = 15;
+    breakInterval = 2;
     numberOfWorkSessions = 5;
 
     pause = false;
+    isBreak = false;
 
     function startTimer(duration, display) {
-        var timer = duration, min, sec;
-        
+        var timer = duration,
+            min, sec;
+
         var id = setInterval(function () {
-            
-             if(pause){
-                 
-                 minutes = min + 1;
-                 seconds = sec;
-                 
-                clearInterval(id); 
-             }
-            
+
+            if (pause) {
+
+                minutes = min + 1;
+
+                clearInterval(id);
+            }
+
             min = parseInt(timer / 60, 10)
             sec = parseInt(timer % 60, 10);
 
@@ -38,9 +39,12 @@ var counterController = (function () {
             display.updateUITimer(min, sec);
 
             if (--timer < 0) {
-                timer = duration;
-                
+
+                isBreak = !isBreak;
+
+                clearInterval(id);
             }
+
         }, 1000);
     }
 
@@ -57,9 +61,9 @@ var counterController = (function () {
 
         },
 
-        setMinutes: function (minutes, uiController) {
+        setMinutes: function (min, uiController) {
 
-            minutes = 45;
+            minutes = min;
 
             console.log(minutes);
 
@@ -70,7 +74,6 @@ var counterController = (function () {
         },
 
         setWorkSessions: function (numberOfWorkSessions) {
-
 
             numberOfWorkSessions = numberOfWorkSessions;
 
@@ -90,17 +93,26 @@ var counterController = (function () {
         //        },
 
         startTimer: function (min, uiController) {
-            
+
             console.log(minutes + " " + seconds);
 
             console.log(min);
-            
-            var time = min * 60;
-            
-            pause = false;
-            
-            startTimer(time, uiController);
 
+            var time = 1 * 60;
+
+            pause = false;
+
+            while (numberOfWorkSessions > 0){
+                
+                console.log(isBreak + " " + numberOfWorkSessions)
+                
+                if (isBreak)
+                    startTimer(breakInterval * 60, uiController);
+                else
+                    startTimer(time, uiController);
+                
+                numberOfWorkSessions--;
+            }
 
 
             //            pause = false;
@@ -198,7 +210,7 @@ var uiController = (function () {
 var mainController = (function (counterController, uiController) {
 
     var domInputs = uiController.getDomInputs();
-    
+
     var time = counterController.getTime();
 
     domInputs.workSessionInterval.addEventListener("change", function () {
@@ -206,6 +218,8 @@ var mainController = (function (counterController, uiController) {
         var wsInterval = this.options[this.selectedIndex].value;
 
         counterController.setMinutes(Number(wsInterval), uiController);
+
+        console.log("changed");
 
     });
 
@@ -228,9 +242,9 @@ var mainController = (function (counterController, uiController) {
     domInputs.startButton.addEventListener("click", function () {
 
         if (this.textContent === "Work!") {
-            
+
             time = counterController.getTime();
-            
+
             console.log(time.minutes + " " + time.seconds);
 
             counterController.startTimer(time.minutes, uiController);
@@ -245,11 +259,6 @@ var mainController = (function (counterController, uiController) {
 
         }
     });
-
-
-
-
-
 
 
 
